@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_event_navigation/main.dart';
+import 'package:flutter_event_navigation/routes/routes.dart';
 import 'package:flutter_event_navigation/screens/user_model.dart';
 
 class DetailScreen extends StatelessWidget {
