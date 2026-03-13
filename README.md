@@ -2,15 +2,25 @@
 
 A new Flutter project.
 
-## Getting Started
+# Flutter Supported Versions
 
-This project is a starting point for a Flutter application.
+```
+Flutter: 3.38.6
 
-A few resources to get you started if this is your first Flutter project:
+Dart: 3.10.7
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Platform: Android & iOS
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+# How to use
+
+```bash
+
+# download packages
+flutter clean 
+flutter pub get
+
+# run
+flutter run
+```
