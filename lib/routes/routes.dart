@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_event_navigation/screens/books/book_details.dart';
 import 'package:flutter_event_navigation/screens/books/book_listing.dart';
 import 'package:flutter_event_navigation/screens/books/book_model.dart';
+import 'package:flutter_event_navigation/screens/counter/counter_page.dart';
 import 'package:flutter_event_navigation/screens/details/detail_screen.dart';
 import 'package:flutter_event_navigation/screens/home/home_screen.dart';
 import 'package:flutter_event_navigation/screens/layout/layout_page.dart';
@@ -23,6 +24,7 @@ Map<String, WidgetBuilder> appRoutes = {
     return BookDetails(book: book!);
   },
   RouteName.layoutPage: (context) => LayoutPage(),
+  RouteName.counter: (context) => CounterPage(),
 };
 
 class RouteName {
@@ -32,4 +34,6 @@ class RouteName {
   static const String bookListing = 'book-listing';
   static const String bookDetails = 'book-details';
   static const String layoutPage = 'layout-page';
+
+  static const String counter = '/counter-page';
 }
