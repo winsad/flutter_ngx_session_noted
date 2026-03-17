@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_event_navigation/routes/routes.dart';
+import 'package:flutter_event_navigation/day_06/list_sample_page.dart';
 
 const fontUbuntu = 'Ubuntu';
 const fontRoboto = 'RobotoMono';
 
-void main() async {
-  // WidgetsFlutterBinding.ensureInitialized();
-
-  // await SharedPreferences.getInstance();
-
+// 1. The Entry point
+void main() {
+  // Run the app
   runApp(const MyApp());
 }
 
+// 1. The Entry point
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -20,12 +19,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: .fromSeed(seedColor: Colors.blue),
+        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
         fontFamily: fontUbuntu,
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute: RouteName.counter,
-      routes: appRoutes,
+      home: ListSamplePage(),
     );
   }
 }
