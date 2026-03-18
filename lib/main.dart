@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_event_navigation/preference/app_preference.dart';
 import 'package:flutter_event_navigation/routes/routes.dart';
 
 const fontUbuntu = 'Ubuntu';
@@ -8,7 +7,7 @@ const fontRoboto = 'RobotoMono';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await AppPreference().init();
+  // await AppPreference().init();
 
   runApp(const MyApp());
 }
@@ -25,7 +24,7 @@ class MyApp extends StatelessWidget {
         fontFamily: fontUbuntu,
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute: RouteName.setting,
+      initialRoute: RouteName.home,
       routes: appRoutes,
     );
   }
