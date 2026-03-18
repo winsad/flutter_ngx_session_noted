@@ -134,7 +134,7 @@ class _CounterPageState extends State<CounterPage> {
   }
 
   // on get count
-  void _onGetCounter() {
+  void _onGetCounter() async {
     final value = preferences?.getInt('count_key');
     final checkRes1 = preferences?.getBool('check1') ?? false;
     final checkRes2 = preferences?.getBool('check2') ?? false;

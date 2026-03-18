@@ -16,7 +16,7 @@ Map<String, WidgetBuilder> appRoutes = {
     return DetailScreen(user: user!);
   },
   RouteName.setting: (context) => SettingScreen(
-    user: UserModel(age: 30, name: 'John', sex: 'M'),
+    // user: UserModel(age: 30, name: 'John', sex: 'M'),
   ),
   RouteName.bookListing: (context) => BookListing(),
   RouteName.bookDetails: (context) {

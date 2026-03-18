@@ -143,7 +143,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   MaterialPageRoute(
                     builder: (context) {
                       return SettingScreen(
-                        user: UserModel(age: 30, name: 'Sombat', sex: 'Male'),
+                        // user: UserModel(age: 30, name: 'Sombat', sex: 'Male'),
                       );
                     },
                   ),
@@ -160,7 +160,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   context,
                   CupertinoPageRoute(
                     builder: (context) => SettingScreen(
-                      user: UserModel(age: 30, name: 'Sombat', sex: 'Male'),
+                      // user: UserModel(age: 30, name: 'Sombat', sex: 'Male'),
                     ),
                   ),
                 );
