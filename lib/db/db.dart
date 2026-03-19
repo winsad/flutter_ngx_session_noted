@@ -5,11 +5,11 @@ import 'package:sqflite/sqflite.dart';
 class LocalDatabaseService {
   static final LocalDatabaseService _instance =
       LocalDatabaseService._internal();
-
   factory LocalDatabaseService() => _instance;
   LocalDatabaseService._internal();
 
   Database? _database;
+  final String _userTable = 'users';
 
   // create db instance
   Future<Database> get database async {
@@ -29,13 +29,11 @@ class LocalDatabaseService {
     );
 
     // Open or create the database
-    return await openDatabase(path, version: 1, onCreate: _createTables);
-  }
-
-  // create db
-  Future<void> _createTables(Database db, int version) async {
-    // Users table
-    await db.execute('''
+    return await openDatabase(
+      path,
+      version: 1,
+      onCreate: (db, version) async {
+        await db.execute('''
       CREATE TABLE users (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name TEXT NOT NULL,
@@ -44,17 +42,21 @@ class LocalDatabaseService {
         createdAt TEXT NOT NULL
       )
     ''');
+      },
+    );
   }
 
   // add user
   Future<int> insertUser(User user) async {
     try {
       final db = await database;
+
       final id = await db.insert(
-        'users',
+        _userTable,
         user.toMap(),
         conflictAlgorithm: ConflictAlgorithm.replace,
       );
+
       return id;
     } catch (e) {
       rethrow;
@@ -65,7 +67,8 @@ class LocalDatabaseService {
   Future<List<User>> getAllUsers() async {
     try {
       final db = await database;
-      final List<Map<String, dynamic>> maps = await db.query('users');
+      // select * from users;
+      final List<Map<String, dynamic>> maps = await db.query(_userTable);
 
       if (maps.isEmpty) {
         return [];
@@ -80,9 +83,10 @@ class LocalDatabaseService {
   // get by id
   Future<User?> getUserById(int id) async {
     try {
+      // select from users where id = id;
       final db = await database;
       final List<Map<String, dynamic>> maps = await db.query(
-        'users',
+        _userTable,
         where: 'id = ?',
         whereArgs: [id],
       );

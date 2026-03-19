@@ -1,3 +1,13 @@
+void test() {
+  final user1 = User(name: 'name1', email: 'email1', phone: 'phone1');
+  final user2 = User(name: 'name1', email: 'email1', phone: 'phone1');
+
+  print(user1 == user2);
+
+  // final user2 = user1.copyWith(phone: 'phone2');
+  //user2 = User(name: 'name1', email: 'email1', phone: 'phone2');
+}
+
 class User {
   final int? id;
   final String name;
@@ -13,6 +23,7 @@ class User {
     DateTime? createdAt,
   }) : createdAt = createdAt ?? DateTime.now();
 
+  // to map
   Map<String, dynamic> toMap() {
     return {
       'id': id,

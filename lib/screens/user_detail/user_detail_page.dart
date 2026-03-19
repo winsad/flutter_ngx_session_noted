@@ -102,7 +102,7 @@ class _UserDetailPageState extends State<UserDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Add User')),
+      appBar: AppBar(title: Text(_isUpdatePage ? 'Update User' : 'Add User')),
       body: Form(
         key: _formKey,
         child: ListView(
@@ -154,9 +154,13 @@ class _UserDetailPageState extends State<UserDetailPage> {
             ElevatedButton(
               onPressed: _isLoading
                   ? null
-                  : _isUpdatePage
-                  ? _updateUser
-                  : _addUser,
+                  : () {
+                      if (_isUpdatePage) {
+                        _updateUser();
+                      } else {
+                        _addUser();
+                      }
+                    },
               child: _isLoading
                   ? const CircularProgressIndicator()
                   : Text(_isUpdatePage ? 'Update User' : 'Add User'),

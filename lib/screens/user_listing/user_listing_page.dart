@@ -12,7 +12,7 @@ class UserListingPage extends StatefulWidget {
 
 class _UserListingPageState extends State<UserListingPage> {
   final LocalDatabaseService _db = LocalDatabaseService();
-  late Future<List<User>> _usersFuture;
+  late List<User> _usersFuture;
 
   @override
   void initState() {
@@ -20,10 +20,9 @@ class _UserListingPageState extends State<UserListingPage> {
     _loadUsers();
   }
 
-  void _loadUsers() {
-    setState(() {
-      _usersFuture = _db.getAllUsers();
-    });
+  void _loadUsers() async {
+    _usersFuture = await _db.getAllUsers();
+    setState(() {});
   }
 
   void _deleteUser(int id) {
@@ -65,19 +64,13 @@ class _UserListingPageState extends State<UserListingPage> {
           ),
         ],
       ),
-      body: FutureBuilder<List<User>>(
-        future: _usersFuture,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
-          }
 
-          if (snapshot.hasError) {
-            return Center(child: Text('Error: ${snapshot.error}'));
-          }
+      // body
+      body: Builder(
+        builder: (context) {
+          final users = _usersFuture;
 
-          final users = snapshot.data ?? [];
-
+          // in case no user
           if (users.isEmpty) {
             return Center(
               child: Column(
@@ -90,6 +83,7 @@ class _UserListingPageState extends State<UserListingPage> {
                   ElevatedButton(
                     onPressed: () async {
                       await Navigator.pushNamed(context, RouteName.details);
+
                       _loadUsers();
                     },
                     child: const Text('Add First User'),
