@@ -46,6 +46,20 @@ class LocalDatabaseService {
     );
   }
 
+  // create db
+  // Future<void> _createTables(Database db, int version) async {
+  //   // Users table
+  //   await db.execute('''
+  //     CREATE TABLE users (
+  //       id INTEGER PRIMARY KEY AUTOINCREMENT,
+  //       name TEXT NOT NULL,
+  //       email TEXT UNIQUE NOT NULL,
+  //       phone TEXT NOT NULL,
+  //       createdAt TEXT NOT NULL
+  //     )
+  //   ''');
+  // }
+
   // add user
   Future<int> insertUser(User user) async {
     try {
