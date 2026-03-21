@@ -6,7 +6,10 @@ import 'package:flutter_event_navigation/screens/counter/counter_page.dart';
 import 'package:flutter_event_navigation/screens/details/detail_screen.dart';
 import 'package:flutter_event_navigation/screens/home/home_screen.dart';
 import 'package:flutter_event_navigation/screens/layout/layout_page.dart';
+import 'package:flutter_event_navigation/screens/provider_page/provider_page.dart';
 import 'package:flutter_event_navigation/screens/settings/setting_screen.dart';
+import 'package:flutter_event_navigation/screens/todo/todo_screen.dart';
+import 'package:flutter_event_navigation/screens/todo/user_listing_screen.dart';
 import 'package:flutter_event_navigation/screens/user_model.dart';
 
 Map<String, WidgetBuilder> appRoutes = {
@@ -25,6 +28,9 @@ Map<String, WidgetBuilder> appRoutes = {
   },
   RouteName.layoutPage: (context) => LayoutPage(),
   RouteName.counter: (context) => CounterPage(),
+  RouteName.todo: (context) => TodoScreen(),
+  RouteName.userListing: (context) => UserListingScreen(),
+  RouteName.counterProvider: (context) => CounterScreen(),
 };
 
 class RouteName {
@@ -36,4 +42,7 @@ class RouteName {
   static const String layoutPage = 'layout-page';
 
   static const String counter = '/counter-page';
+  static const String todo = '/todo-page';
+  static const String userListing = '/user-listing';
+  static const String counterProvider = '/counter-provider';
 }
