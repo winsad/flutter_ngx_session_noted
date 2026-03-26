@@ -1,5 +1,0 @@
-count_key:15, 
-theme_key:dark,
-.
-.
-.

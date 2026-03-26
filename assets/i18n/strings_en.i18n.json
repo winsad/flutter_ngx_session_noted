@@ -1,0 +1,11 @@
+{
+    "welcome.text": "Welcome to Ngx News",
+    "account": {
+        "label": "Account"
+    },
+    "auth": {
+        "login": "Login",
+        "logout": "Logout",
+        "register": "Register"
+    }
+}

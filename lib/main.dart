@@ -1,49 +1,39 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_event_navigation/preference/app_preference.dart';
-import 'package:flutter_event_navigation/routes/routes.dart';
-import 'package:flutter_event_navigation/screens/provider_page/provider_page.dart';
+import 'package:flutter_mobile_application/app/app.dart';
+import 'package:flutter_mobile_application/i18n/translations.g.dart';
+import 'package:flutter_mobile_application/preferences/app_preferences.dart';
+import 'package:flutter_mobile_application/providers/account_provider.dart';
+import 'package:flutter_mobile_application/providers/auth_provider.dart';
+import 'package:flutter_mobile_application/providers/bookmark_provider.dart';
+import 'package:flutter_mobile_application/providers/dashboard_provider.dart';
+import 'package:flutter_mobile_application/providers/home_provider.dart';
+import 'package:flutter_mobile_application/providers/onboarding_provider.dart';
+import 'package:flutter_mobile_application/providers/splash_provider.dart';
 import 'package:provider/provider.dart';
 
-const fontUbuntu = 'Ubuntu';
-const fontRoboto = 'RobotoMono';
-
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await AppPreference().init();
+  await AppPreferences().init();
+
+  final language = await AppPreferences().getLanguage();
+  LocaleSettings.useDeviceLocale();
+  if (language != null) {
+    LocaleSettings.setLocaleRaw(language);
+  }
 
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => CounterProvider()),
-        ChangeNotifierProvider(create: (context) => ThemeProvider()),
+        ChangeNotifierProvider(create: (context) => SplashProvider()),
+        ChangeNotifierProvider(create: (context) => OnboardingProvider()),
+        ChangeNotifierProvider(create: (context) => AuthProvider()),
+        ChangeNotifierProvider(create: (context) => DashboardProvider()),
+        ChangeNotifierProvider(create: (context) => HomeProvider()),
+        ChangeNotifierProvider(create: (context) => BookmarkProvider()),
+        ChangeNotifierProvider(create: (context) => AccountProvider()),
       ],
-      child: const MyApp(),
+      child: TranslationProvider(child: const MyApp()),
     ),
   );
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Selector<ThemeProvider, ThemeMode>(
-      selector: (_, provider) => provider.themeMode,
-      builder: (context, theme, child) {
-        return MaterialApp(
-          title: 'Flutter Demo',
-          theme: ThemeData(
-            colorScheme: .fromSeed(seedColor: Colors.blue),
-            fontFamily: fontUbuntu,
-          ),
-          darkTheme: ThemeData.dark(),
-          themeMode: theme,
-          debugShowCheckedModeBanner: false,
-          initialRoute: RouteName.counterProvider,
-          routes: appRoutes,
-        );
-      },
-    );
-  }
 }

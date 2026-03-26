@@ -1,28 +1,16 @@
-# Flutter Fundamental NGX
+# flutter_mobile_application
 
-## Flutter Supported Versions
+A new Flutter project.
 
-```
-Flutter: 3.38.6
+## Getting Started
 
-Dart: 3.10.7
+This project is a starting point for a Flutter application.
 
-Platform: Android & iOS
-```
+A few resources to get you started if this is your first Flutter project:
 
+- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-## How to use
-
-```bash
-
-# download packages
-flutter clean 
-flutter pub get
-
-# run
-flutter run
-```
-
-## Flutter Fundamental Resources
-
-[Flutter Fundamental Resources](https://github.com/winsad/flutter_ngx_session_noted/tree/fundamental)
+For help getting started with Flutter development, view the
+[online documentation](https://docs.flutter.dev/), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.
